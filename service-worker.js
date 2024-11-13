@@ -25,9 +25,9 @@ self.addEventListener('activate', event =>{
 //Evento de fetch para interceptar solicitudes y servir desde cache
 self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event, request)
+        caches.match(event.request)
           .then(response => {
-            return response || fetch(event.request)
+            return response || fetch(event.request);
           })
-    )
+    );
 });
